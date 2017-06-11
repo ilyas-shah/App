@@ -1,8 +1,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
+var http = require('http');
 var mysql = require('mysql');
-
+const port = process.env.PORT || 3000;
 
 var con = mysql.createConnection({
   host: "localhost",
@@ -22,7 +23,9 @@ con.connect(function(err) {
 
 //creating instance of express 
 var app = express();
+var server = http.createServer(app);
 
+//server logging middelware
 app.use(function(req, res, next){
 	console.log(`${req.method} ${req.url}`);
 	next();
@@ -88,6 +91,6 @@ app.post('/list/add', function(req, res){
 });
 
 //console.log(JSON.stringify(list));
-app.listen(1010, function(){
-	console.log("Server started listening at port 1010");
+app.listen(port, function(){
+	console.log(`Server started listening at port:${port}`);
 })
