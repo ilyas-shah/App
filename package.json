@@ -1,7 +1,7 @@
 {
   "name": "app",
   "version": "1.0.0",
-  "description": "a simple app",
+  "description": "an fb chat bot",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,7 +19,7 @@
     "ejs": "^2.5.6",
     "express": "^4.15.3",
     "express-validator": "^3.2.0",
-    "mongodb": "^2.2.28",
-    "mysql": "^2.13.0"
+    "mongoose": "^4.11.5",
+    "request": "^2.81.0"
   }
 }
