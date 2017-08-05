@@ -51,7 +51,7 @@ function processPostback(event) {
     // Get user's first name from the User Profile API
     // and include it in the greeting
     request({
-      url: "https://graph.facebook.com/v2.6/" + senderId,
+      url: "https://graph.facebook.com/v2.10/" + senderId,
       qs: {
         access_token: process.env.PAGE_ACCESS_TOKEN,
         fields: "first_name"
@@ -62,11 +62,12 @@ function processPostback(event) {
       if (error) {
         console.log("Error getting user's name: " +  error);
       } else {
+        console.log(body)
         var bodyObj = JSON.parse(body);
         name = bodyObj.first_name;
         greeting = "Hi " + name + ". ";
       }
-      var message = greeting + "My name is fBot. I am created by the owner of this page. how can i help you?";
+      var message = greeting + `My name is fBot. I am created by ${event.recipient.id}. how can i help you?`
       sendMessage(senderId, {text: message});
     });
   }
@@ -83,6 +84,7 @@ function sendMessage(recipientId, message) {
       message: message,
     }
   }, function(error, response, body) {
+    console.log(body)
     if (error) {
       console.log("Error sending message: " + response.error);
     }

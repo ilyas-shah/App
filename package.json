@@ -18,8 +18,16 @@
     "body-parser": "^1.17.2",
     "ejs": "^2.5.6",
     "express": "^4.15.3",
-    "express-validator": "^3.2.0",
-    "mongoose": "^4.11.5",
-    "request": "^2.81.0"
+    "express-validator": "^3.2.0"
   }
 }
+
+curl -X POST -H "Content-Type":"application/json" -d '{
+  "setting_type":"call_to_actions",
+  "thread_state":"new_thread",
+  "call_to_actions":[
+    {
+      "payload":"Greeting"
+    }
+  ]
+}' "https://graph.facebook.com/v2.10/1958388997777356/thread_settings?access_token=EAACEdEose0cBAJxYHgtIOftZCtz3wxRxJ9X83qnqZA1G2vt20yZBoEFrG26lzOlsHZAxweCRxOzQu8dYuW5ZB3852qMLBJQajlZBuvVpnDHPvPebR4nUB096lsmtMlNXQNyZBTBFGFfvcCtY07RrLNKcHiWK2E0iAog3GJG7L5dbaoxgQwZCvjZCMLQPI4DcYUp4ZD"
